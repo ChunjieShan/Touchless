@@ -21,10 +21,12 @@ class MaskDetect:
         self.model = tf.keras.models.load_model('models/mask_detector.model')
         self.face_detector = cv.dnn.readNetFromCaffe("models/deploy.prototxt", "models/res10_300x300_ssd_iter_140000.caffemodel")
         self.face_detected = False
-        self.chunjie_encoding = np.loadtxt("chunjie_encoding", delimiter=',')
+        self.chunjie_encoding = np.loadtxt("face-encodings/chunjie_encoding", delimiter=',')
+        self.yifan_encoding = np.loadtxt("face-encodings/yifan_encoding", delimiter=',')
+        self.ruohai_encoding = np.loadtxt("face-encodings/ruohai_encoding", delimiter=',')
         self.name = "Unknown"
-        self.known_face_encoding = [self.chunjie_encoding]
-        self.known_face_name = ["Chunjie Shan"]
+        self.known_face_encoding = [self.chunjie_encoding, self.yifan_encoding, self.ruohai_encoding]
+        self.known_face_name = ["Chunjie Shan", "Yifan Wei", "Ruohai Hu"]
         self.left = 0
         self.right = 0
         self.bottom = 0
